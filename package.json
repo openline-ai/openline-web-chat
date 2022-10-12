@@ -1,0 +1,10 @@
+{
+  "name": "openline-help-chat",
+  "version": "1.0.0",
+  "description": "Openline Help Chat",
+  "main": "index.js",
+  "repository": "https://github.com/openline-ai/openline-help-chat.git",
+  "author": "openline-ai",
+  "license": "Apache-2.0",
+  "private": false
+}
