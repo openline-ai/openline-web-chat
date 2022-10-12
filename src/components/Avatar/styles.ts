@@ -7,7 +7,7 @@ export const styles: { [key: string]: CSSProperties } = {
         // Border
         borderRadius: '50%',
         // Background
-        backgroundImage: `url(/teamLogo.png)`,
+        backgroundImage: `https://s3.eu-west-2.amazonaws.com/openline.ai/teamLogo.png`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '84px',
