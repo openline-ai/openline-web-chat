@@ -1,1 +1,0 @@
-export { default as HelpChat } from "./HelpChat";

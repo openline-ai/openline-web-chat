@@ -1,29 +1,49 @@
 {
   "name": "@openline-ai/openline-help-chat",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Openline Help Chat",
-  "repository": "https://github.com/openline-ai/openline-help-chat.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openline-ai/openline-help-chat.git"
+  },
   "author": "openline-ai",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup-watch": "rollup -c -w",
+    "build": "CI=false rollup -c"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^23.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
-    "@rollup/plugin-typescript": "^9.0.1",
-    "@types/react": "^18.0.21",
-    "react": "^18.2.0",
-    "rollup": "^3.1.0",
-    "rollup-plugin-dts": "^4.2.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.4"
+    "@babel/core": "^7.17.8",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.4",
+    "postcss": "^8.4.14",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "rollup": "^2.67.0",
+    "rollup-plugin-dts": "^4.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "storybook-css-modules": "^1.0.7",
+    "tslib": "^2.4.0",
+    "typescript": "^4.5.5"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "package.json",
+    "README.md"
   ],
-  "types": "dist/index.d.ts"
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
