@@ -1,38 +1,32 @@
-import {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect, useState, RefObject, FunctionComponent, FC, MouseEventHandler} from "react";
 import Avatar from "../Avatar/Avatar";
 
-export default function SupportEngine() {
-    const wrapperRef = useRef(null);
+interface HelpChatProps {
+}
 
-    useOutsideAlerter(wrapperRef);
 
-    const [visible, setVisible] = useState(false)
+export default class HelpChat extends React.Component<HelpChatProps> {
+    wrapperRef = useRef<HTMLInputElement>(null);
 
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    setVisible(false)
-                }
-            }
-
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
+    constructor(props: HelpChatProps) {
+        super(props);
+        this.state = {isVisible: false}
     }
 
-    return (
-        <div>
-            <Avatar
-                onClick={() => setVisible(true)}
-                style={{
-                    position: 'fixed',
-                    bottom: '24px',
-                    right: '24px',
-                }}
-            />
-        </div>
-    )
+    render() {
+        return (
+                <div>
+                    <Avatar
+                            onClick={() => {
+                                this.setState({isVisible: false})
+                            }}
+                            style={{
+                                position: 'fixed',
+                                bottom: '24px',
+                                right: '24px',
+                            }}
+                    />
+                </div>
+        )
+    }
 }
