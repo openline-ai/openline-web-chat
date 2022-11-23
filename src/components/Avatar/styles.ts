@@ -1,4 +1,5 @@
 import {CSSProperties} from "react";
+import logoUrl from './teamLogo.png';
 
 export const styles: { [key: string]: CSSProperties } = {
     chatWithOpenlineButton: {
@@ -7,7 +8,7 @@ export const styles: { [key: string]: CSSProperties } = {
         // Border
         borderRadius: '50%',
         // Background
-        backgroundImage: `https://s3.eu-west-2.amazonaws.com/openline.ai/teamLogo.png`,
+        backgroundImage: `url(${logoUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '84px',
