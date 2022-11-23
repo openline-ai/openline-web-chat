@@ -106,3 +106,9 @@ dist
 
 # Idea IDE
 .idea
+
+# bin. Go output dir
+bin
+
+# node
+*dist
