@@ -5,7 +5,7 @@ name: Webchat Package
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "otter" ]
   release:
     types: [created, edited]
 
