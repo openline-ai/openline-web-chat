@@ -17,9 +17,8 @@ https://github.com/openline-ai/openline-oasis
 ### Imports
 
 ```javascript
-
 // CSS
-import 'react-chat-elements/dist/esm/index.css'
+import '@openline-ai/openline-web-chat/dist/esm/index.css'
 ```
 
 ```javascript
