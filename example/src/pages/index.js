@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
+import {WebChat} from "@openline-ai/openline-web-chat";
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -36,6 +37,18 @@ export default function Home() {
       <main>
         <HomepageFeatures />
       </main>
+        <WebChat apikey="nobody-will-guess-this-api-key"
+                 httpServerPath="http://localhost:8013/api/v1"
+                 wsServerPath="ws://localhost:8013/api/v1"
+                 trackerEnabled={true}
+                 trackerAppId="openline-help-widget"
+                 trackerId="openline-help-widget-dev"
+                 trackerCollectorUrl="https://lzdyxrxc-uat-ninja.openline.ai"
+                 trackerBufferSize="1"
+                 trackerMinimumVisitLength="10"
+                 trackerHeartbeatDelay="10"
+
+        ></WebChat>
     </Layout>
   );
 }
