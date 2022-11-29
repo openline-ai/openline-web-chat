@@ -7,7 +7,6 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import '@openline-ai/openline-web-chat/dist/esm/index.css'
 import styles from './index.module.css';
 import {WebChat} from "@openline-ai/openline-web-chat";
-
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -29,6 +28,7 @@ function HomepageHeader() {
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+  console.log(siteConfig)
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
@@ -37,16 +37,16 @@ export default function Home() {
       <main>
         <HomepageFeatures />
       </main>
-        <WebChat apikey="nobody-will-guess-this-api-key"
-                 httpServerPath="http://localhost:8013/api/v1"
-                 wsServerPath="ws://localhost:8013/api/v1"
-                 trackerEnabled={true}
-                 trackerAppId="openline-help-widget"
-                 trackerId="openline-help-widget-dev"
-                 trackerCollectorUrl="https://lzdyxrxc-uat-ninja.openline.ai"
-                 trackerBufferSize="1"
-                 trackerMinimumVisitLength="10"
-                 trackerHeartbeatDelay="10"
+        <WebChat apikey={`${siteConfig.customFields.REACT_APP_SP_API_KEY}`}
+                 httpServerPath={`${siteConfig.customFields.REACT_APP_SP_HTTP_PATH}`}
+                 wsServerPath={`${siteConfig.customFields.REACT_APP_SP_WS_PATH}`}
+                 trackerEnabled={`${siteConfig.customFields.REACT_APP_SP_TRACKER_ENABLED}` === 'true'}
+                 trackerAppId={`${siteConfig.customFields.REACT_APP_SP_TRACKER_APP_ID}`}
+                 trackerId={`${siteConfig.customFields.REACT_APP_SP_TRACKER_TRACKER_ID}`}
+                 trackerCollectorUrl={`${siteConfig.customFields.REACT_APP_SP_TRACKER_COLLECTOR_URL}`}
+                 trackerBufferSize={`${siteConfig.customFields.REACT_APP_SP_TRACKER_BUFFER_SIZE}`}
+                 trackerMinimumVisitLength={`${siteConfig.customFields.REACT_APP_SP_TRACKER_MIN_VISIT_SECONDS}`}
+                 trackerHeartbeatDelay={`${siteConfig.customFields.REACT_APP_SP_TRACKER_HEARTBEAT_SECONDS}`}
 
         ></WebChat>
     </Layout>
