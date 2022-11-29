@@ -36,3 +36,18 @@ import 'react-chat-elements/dist/esm/index.css'
     ></WebChat>
 ```
 
+### Docusaurus and polyfills
+webpack >= 5 does not include polyfills. 
+If using docusaurus for building, polyfills must be added as a plugin:
+
+Install docusaurus-node-polyfills:
+```bash
+npm install docusaurus-node-polyfills --save-dev
+or
+yarn add docusaurus-node-polyfills --dev
+```
+
+Include the pluging in the docusaurus.config.js
+```javascript
+plugins: ['docusaurus-node-polyfills']
+```
