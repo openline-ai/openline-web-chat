@@ -25,7 +25,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.2.0",
-    "docusaurus-node-polyfills": "^1.0.0"
+    "docusaurus-node-polyfills": "^1.0.0",
+    "dotenv": "^16.0.3"
   },
   "browserslist": {
     "production": [
