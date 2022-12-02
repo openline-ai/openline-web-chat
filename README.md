@@ -5,12 +5,18 @@ There are 2 options to run the Web Chat
 1. Use Openline's Oasis servers (recommended).
 2. Install your own Oasis:
 
+1. Setup gh npm package.
 ```
-1. yarn install @openline-ai/openline-web-chat
+Add this to your ~/.npmrc
+//npm.pkg.github.com/:_authToken=your-gh-key
+@openline-ai:registry=https://npm.pkg.github.com/
+```
+
+2. yarn install @openline-ai/openline-web-chat
 ```
 
 ```
-2. Install oasis: 
+3. Install oasis: 
 https://github.com/openline-ai/openline-oasis
 ```
 
