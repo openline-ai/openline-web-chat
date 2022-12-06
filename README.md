@@ -6,19 +6,21 @@ There are 2 options to run the Web Chat
 2. Install your own Oasis:
 
 1. Setup gh npm package.
+
+Generate a fine-grained Github Personal Access Token using [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with **XXX** permissions:
+
+Add this to your ~/.npmrc file:
+
 ```
-Add this to your ~/.npmrc
 //npm.pkg.github.com/:_authToken=your-gh-key
 @openline-ai:registry=https://npm.pkg.github.com/
 ```
 
-2. yarn install @openline-ai/openline-web-chat
+2. Install the package to your project:
 ```
-
+yarn add @openline-ai/openline-web-chat
 ```
-3. Install oasis: 
-https://github.com/openline-ai/openline-oasis
-```
+3. Install [Openline Oasis](https://github.com/openline-ai/openline-oasis)
 
 ### Imports
 
