@@ -2,17 +2,20 @@
 
 ## Install
 There are 2 options to run the Web Chat
-1. Use Openline's Oasis servers (recommended).
-2. Install your own Oasis:
+### 1. Use Openline's Oasis servers (recommended).
+
+See documentation [here TBC]()
+
+### 2. Install your own Oasis:
 
 1. Setup gh npm package.
 
-Generate a fine-grained Github Personal Access Token using [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with **XXX** permissions:
+Generate a Github Classic Personal Access Token using [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with `read:packages` permissions:
 
 Add this to your ~/.npmrc file:
 
 ```
-//npm.pkg.github.com/:_authToken=your-gh-key
+//npm.pkg.github.com/:_authToken={{your-gh-key}}
 @openline-ai:registry=https://npm.pkg.github.com/
 ```
 
