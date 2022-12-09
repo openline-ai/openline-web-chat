@@ -12,7 +12,9 @@
   "scripts": {
     "rollup-watch": "rollup -c -w",
     "build": "yarn run clear:build && rollup -c",
-    "clear:build": "rimraf dist build"
+    "clear:build": "rimraf dist build",
+    "storybook": "start-storybook -p 3000",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -23,6 +25,14 @@
     "@rollup/plugin-url": "^8.0.1",
     "@snowplow/browser-plugin-link-click-tracking": "^3.7.0",
     "@snowplow/browser-tracker": "^3.7.0",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/builder-webpack4": "^6.5.14",
+    "@storybook/manager-webpack4": "^6.5.14",
+    "@storybook/react": "^6.5.14",
+    "@storybook/testing-library": "^0.0.13",
     "@types/node": "^18.8.5",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.5",
