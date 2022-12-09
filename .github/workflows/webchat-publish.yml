@@ -5,28 +5,27 @@ name: Webchat Package
 
 on:
   push:
-    branches: [ "otter" ]
+    branches: [ "otter", "rc" ]
   release:
     types: [created, edited]
 
 jobs:
-  publish-npm:
-    if: github.ref_name == 'otter' || github.event_name == 'release'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      pull-requests: read
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://npm.pkg.github.com'
-
-      - run: yarn install
-      - run: yarn build
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.REPOSITORY_READ_WRITE_TOKEN}}
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+            - run: npm install -g yarn
+            - name: Install dependencies
+              run: yarn install
+            - name: Build app
+              run: yarn build
+            - name: Semantic release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.REPOSITORY_READ_WRITE_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+              run: npx semantic-release
           
