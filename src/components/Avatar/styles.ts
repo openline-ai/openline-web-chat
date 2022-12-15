@@ -30,5 +30,6 @@ export const styles: { [key: string]: CSSProperties } = {
         // Color
         backgroundColor: '#f9f0ff',
         color: 'black',
+        fontFamily: 'sans-serif',
     }
 }
