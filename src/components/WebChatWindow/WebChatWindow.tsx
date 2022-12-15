@@ -19,7 +19,8 @@ export default function SupportWindow(props: WebChatWindowProps) {
             className='transition-5'
             style={{
                 ...styles.supportWindow,
-                ...{opacity: props.visible ? '1' : '0'}
+                ...{opacity: props.visible ? '1' : '0',
+                zIndex: props.visible ? '100' : '-1'}
             }}
         >
             <EmailForm visible={user === ""}
