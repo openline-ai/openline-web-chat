@@ -19,7 +19,7 @@ export default function Avatar(props: IAvatarProps) {
                     ...{opacity: hovered ? '1' : '0'}
                 }}
             >
-                {" Send us a message"}
+                {"Send us a message"}
             </div>
             <div
                 onMouseEnter={() => isHovered(true)}
@@ -28,7 +28,7 @@ export default function Avatar(props: IAvatarProps) {
                 className='transition-3'
                 style={{
                     ...styles.chatWithOpenlineButton,
-                    ...{border: hovered ? '1px solid #f9f0ff' : '4px solid #7a39e0'}
+                    ...{border: hovered ? '2px solid #f9f0ff' : '2px solid #7a39e0'}
                 }}
             />
         </div>

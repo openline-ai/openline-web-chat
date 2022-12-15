@@ -98,7 +98,7 @@ export default function EmailForm(props: EmailPros) {
                 />
 
                 <div style={styles.topText}>
-                    Welcome to my <br/> support 👋
+                    Welcome to Openline 👋
                 </div>
 
                 <form
@@ -109,6 +109,7 @@ export default function EmailForm(props: EmailPros) {
                         placeholder='Your Email'
                         onChange={e => setEmail(e.target.value)}
                         style={styles.emailInput}
+                        type="email"
                     />
                 </form>
 

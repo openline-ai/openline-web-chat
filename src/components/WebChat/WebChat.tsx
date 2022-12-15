@@ -43,9 +43,7 @@ export default function WebChat(props: WebChatProps) {
                            wsServerPath={props.wsServerPath}
             />
             <Avatar
-                onClick={() => {
-                    isVisible(true)
-                }}
+                onClick={() => {visible ? isVisible(false): isVisible(true)}}
                 style={{
                     position: 'fixed',
                     bottom: '24px',

@@ -11,16 +11,16 @@ export const styles: { [key: string]: CSSProperties } = {
         backgroundImage: `url(${logoUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: '84px',
+        backgroundSize: '64px',
         // Size
-        width: '84px',
-        height: '84px',
+        width: '64px',
+        height: '64px',
     },
     avatarHello: {
         // Position
         position: 'absolute',
-        left: 'calc(-100% - 44px - 28px)',
-        top: 'calc(50% - 24px)',
+        left: 'calc(-100% - 66px - 28px)',
+        top: 'calc(50% - 36px)',
         // Layering
         zIndex: '10000',
         boxShadow: '0px 0px 16px 6px rgba(0, 0, 0, 0.33)',
@@ -30,5 +30,6 @@ export const styles: { [key: string]: CSSProperties } = {
         // Color
         backgroundColor: '#f9f0ff',
         color: 'black',
+        fontFamily: 'sans-serif',
     }
 }

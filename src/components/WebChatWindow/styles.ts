@@ -41,6 +41,7 @@ export const styles: { [key: string]: CSSProperties } = {
         color: 'white',
         fontSize: '24px',
         fontWeight: '600',
+        fontFamily: 'sans-serif',
     },
     emailInput: {
         width: '66%',
@@ -55,8 +56,9 @@ export const styles: { [key: string]: CSSProperties } = {
         width: '100%',
         top: '60%',
         color: '#7a39e0',
-        fontSize: '24px',
-        fontWeight: '600'
+        fontSize: '20px',
+        fontWeight: '600',
+        fontFamily: 'sans-serif',
     },
     loadingDiv: {
         position: 'absolute',
