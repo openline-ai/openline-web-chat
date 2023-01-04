@@ -1,36 +1,15 @@
-import React, {useState} from "react";
-import {styles} from './styles'
+import React from "react";
+import './styles.css'
 
 interface IAvatarProps {
-    onClick: () => void,
     style: {}
 }
 
-export default function Avatar(props: IAvatarProps) {
-
-    const [hovered, isHovered] = useState(false)
-
+export const Avatar = (props: IAvatarProps) => {
     return (
-        <div style={props.style}>
             <div
-                className='transition-3'
-                style={{
-                    ...styles.avatarHello,
-                    ...{opacity: hovered ? '1' : '0'}
-                }}
-            >
-                {"Send us a message"}
-            </div>
-            <div
-                onMouseEnter={() => isHovered(true)}
-                onMouseLeave={() => isHovered(false)}
-                onClick={() => props.onClick && props.onClick()}
-                className='transition-3'
-                style={{
-                    ...styles.chatWithOpenlineButton,
-                    ...{border: hovered ? '2px solid #f9f0ff' : '2px solid #7a39e0'}
-                }}
+                className={`transition-3 openline_avatar`}
+                style={props.style}
             />
-        </div>
     )
 }
