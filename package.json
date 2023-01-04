@@ -1,6 +1,6 @@
 {
-    "name": "@openline-ai/openline-web-chat",
-    "version": "1.0.1",
+    "name": "czat",
+    "version": "4",
     "description": "Openline Web Chat",
     "repository": {
         "type": "git",

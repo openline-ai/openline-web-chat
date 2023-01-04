@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import Avatar from "../Avatar/Avatar";
+import {AvatarButton} from "../Avatar";
 import WebChatWindow from "../WebChatWindow/WebChatWindow";
 import OpenlineTracker from "./OpenlineTracker";
 
@@ -14,9 +14,25 @@ interface WebChatProps {
     trackerBufferSize: string
     trackerMinimumVisitLength: string
     trackerHeartbeatDelay: string
+    children?: React.ReactElement | undefined
+    userEmail?: string | null
 }
 
-export default function WebChat(props: WebChatProps) {
+export default function WebChat({
+                                    apikey,
+                                    httpServerPath,
+                                    wsServerPath,
+                                    trackerEnabled,
+                                    trackerAppId,
+                                    trackerId,
+                                    trackerCollectorUrl,
+                                    trackerBufferSize,
+                                    trackerMinimumVisitLength,
+                                    trackerHeartbeatDelay,
+                                    userEmail,
+                                    children
+
+}: WebChatProps) {
     const componentRef = useRef();
 
     const [visible, isVisible] = useState(false);
@@ -35,29 +51,30 @@ export default function WebChat(props: WebChatProps) {
         }
     }, []);
 
+    const handleToggleChatWindow = () => visible ? isVisible(false) : isVisible(true)
+
     return (
-        <div ref={componentRef as any}>
+        <div ref={componentRef as any} style={{position: "relative"}}>
             <WebChatWindow visible={visible}
-                           apikey={props.apikey}
-                           httpServerPath={props.httpServerPath}
-                           wsServerPath={props.wsServerPath}
+                           apikey={apikey}
+                           httpServerPath={httpServerPath}
+                           wsServerPath={wsServerPath}
+                           userEmail={userEmail}
             />
-            <Avatar
-                onClick={() => {visible ? isVisible(false): isVisible(true)}}
-                style={{
-                    position: 'fixed',
-                    bottom: '24px',
-                    right: '24px',
-                }}
-            />
+
+            {children ? React.cloneElement(children, { onClick: handleToggleChatWindow }) :
+                <AvatarButton
+                    onClick={handleToggleChatWindow}
+            />}
+
             <OpenlineTracker
-                enabled={props.trackerEnabled}
-                appId={props.trackerAppId}
-                trackerId={props.trackerId}
-                collectorUrl={props.trackerCollectorUrl}
-                bufferSize={props.trackerBufferSize}
-                minimumVisitLength={props.trackerMinimumVisitLength}
-                heartbeatDelay={props.trackerHeartbeatDelay}
+                enabled={trackerEnabled}
+                appId={trackerAppId}
+                trackerId={trackerId}
+                collectorUrl={trackerCollectorUrl}
+                bufferSize={trackerBufferSize}
+                minimumVisitLength={trackerMinimumVisitLength}
+                heartbeatDelay={trackerHeartbeatDelay}
             />
         </div>
     )

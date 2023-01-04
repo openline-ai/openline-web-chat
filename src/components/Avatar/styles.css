@@ -1,0 +1,50 @@
+.openline_webchat_button {
+    cursor: pointer;
+    box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.33);
+    border-radius: 50%;
+    background-size: 64px;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #f9f0ff;
+}
+
+.openline_webchat_button:hover,
+.openline_webchat_button:focus,
+.openline_webchat_button:active {
+    border: 2px solid #7a39e0;
+}
+
+.openline_avatar {
+    cursor: pointer;
+    box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.33);
+    border-radius: 50%;
+    background-size: 64px;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #f9f0ff;
+}
+
+.openline_avatar_tooltip {
+    position: absolute;
+    left: calc(-100% - 66px - 10px);
+    top: calc(50% - 36px);
+    z-index: 10000;
+    box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.33);
+    padding: 12px 12px 12px 16px;
+    border-radius: 24px;
+    background-color: #f9f0ff;
+    color: #000;
+    font-family: sans-serif;
+    display: none;
+}
+
+.openline_avatar_wrapper {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+}
+
+.openline_avatar_wrapper:focus .openline_avatar_tooltip,
+.openline_avatar_wrapper:hover .openline_avatar_tooltip {
+   display: block;
+}

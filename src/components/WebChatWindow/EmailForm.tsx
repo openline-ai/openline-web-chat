@@ -3,8 +3,7 @@ import React, {useState} from "react"
 import {styles} from "./styles"
 
 import {LoadingOutlined} from '@ant-design/icons'
-
-import Avatar from '../Avatar'
+import {Avatar} from '../index';
 
 interface EmailPros {
     onSetUser: (user: string) => void
@@ -88,13 +87,12 @@ export default function EmailForm(props: EmailPros) {
             />
 
             <div style={{position: 'absolute', height: '100%', width: '100%', textAlign: 'center'}}>
-                <Avatar onClick={() => {
-                }}
-                        style={{
-                            position: 'relative',
-                            left: 'calc(50% - 44px)',
-                            top: '10%',
-                        }}
+                <Avatar
+                       style={{
+                          position: 'relative',
+                          left: 'calc(50% - 44px)',
+                          top: '10%',
+                       }}
                 />
 
                 <div style={styles.topText}>
