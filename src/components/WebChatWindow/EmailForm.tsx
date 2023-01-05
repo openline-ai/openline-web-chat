@@ -90,7 +90,6 @@ export default function EmailForm(props: EmailPros) {
                 <Avatar
                        style={{
                           position: 'relative',
-                          left: 'calc(50% - 44px)',
                           top: '10%',
                        }}
                 />
