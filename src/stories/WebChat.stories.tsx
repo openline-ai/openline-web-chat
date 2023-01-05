@@ -12,8 +12,7 @@ export default {
   },
 } as ComponentMeta<typeof WebChatComponent>;
 
-const Template: ComponentStory<typeof WebChatComponent> = (args) => ( <WebChat {...args}/>)
-const WebChat = Template.bind({});
+const Template: ComponentStory<typeof WebChatComponent> = (args) => ( <WebChatComponent {...args}/>)
 
 const commonArgs = {
         apikey: 'nobody-will-guess-this-api-key',
