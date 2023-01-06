@@ -77,6 +77,7 @@ export default function WebChat({
                 heartbeatDelay={trackerHeartbeatDelay}
                 userEmail={userEmail}
             />
+
         </div>
     )
 
