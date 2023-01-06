@@ -26,12 +26,12 @@
 
 .openline_avatar_tooltip {
     position: absolute;
-    left: calc(-100% - 66px - 10px);
-    top: calc(50% - 36px);
+    left: calc(-100% - 55px - 28px);
+    top: calc(50% - 52px);
     z-index: 10000;
     box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.33);
-    padding: 12px 12px 12px 16px;
-    border-radius: 24px;
+    padding: 12px 12px 12px 12px;
+    border-radius: 24px 24px 4px 24px;
     background-color: #f9f0ff;
     color: #000;
     font-family: sans-serif;
