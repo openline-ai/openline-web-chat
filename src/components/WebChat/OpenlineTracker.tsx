@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {enableActivityTracking, newTracker, trackPageView} from '@snowplow/browser-tracker';
 import {enableLinkClickTracking, LinkClickTrackingPlugin} from '@snowplow/browser-plugin-link-click-tracking';
+import {BrowserTracker} from "@snowplow/browser-tracker-core";
 
 interface OpenlineTrackerProps {
     enabled: boolean
@@ -10,9 +11,12 @@ interface OpenlineTrackerProps {
     bufferSize: string
     minimumVisitLength: string
     heartbeatDelay: string
+    userEmail?: string | null | undefined
 }
 
 export default function OpenlineTracker(props: OpenlineTrackerProps) {
+
+    let browserTracker: BrowserTracker | undefined = undefined;
 
     function propertyOrDefault<T>(propertyValue: T, defaultValue: T) {
         if (propertyValue !== undefined) {
@@ -23,7 +27,7 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
 
     useEffect(() => {
         if (props.enabled) {
-            newTracker(props.trackerId, props.collectorUrl, {
+            browserTracker = newTracker(props.trackerId, props.collectorUrl, {
                 appId: props.appId,
                 discoverRootDomain: true,
                 cookieSecure: true,
@@ -37,6 +41,10 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
                 },
                 plugins: [LinkClickTrackingPlugin()],
             });
+
+            if (props.userEmail) {
+                browserTracker.setUserId(props.userEmail);
+            }
 
             enableActivityTracking({
                 minimumVisitLength: parseInt(propertyOrDefault(props.minimumVisitLength, "30")),
@@ -53,7 +61,15 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
         }
     }, []);
 
+    useEffect(() => {
+
+        if (browserTracker && props.userEmail) {
+            browserTracker.setUserId(props.userEmail);
+        }
+
+    }, [props.userEmail])
+
     return (
-        <></>
+            <></>
     )
 }

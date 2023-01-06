@@ -75,6 +75,7 @@ export default function WebChat({
                 bufferSize={trackerBufferSize}
                 minimumVisitLength={trackerMinimumVisitLength}
                 heartbeatDelay={trackerHeartbeatDelay}
+                userEmail={userEmail}
             />
         </div>
     )
