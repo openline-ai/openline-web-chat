@@ -1,29 +1,23 @@
-# openline-chat
+# openline-web-chat
 
-## Install
-There are 2 options to run the Web Chat
+## Select (and install) backend
+There are 2 options to run the backend of the webchat:
+
 ### 1. Use Openline's Oasis servers (recommended).
 
-See documentation [here TBC]()
+We recommend using Openline Cloud as it is overall easier to setup and use.
 
-### 2. Install your own Oasis:
+To do this 
 
-1. Setup gh npm package.
+### 2. Install your own Oasis using the Openline CLI
 
-Generate a Github Classic Personal Access Token using [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with `read:packages` permissions:
-
-Add this to your ~/.npmrc file:
-
-```
-//npm.pkg.github.com/:_authToken={{your-gh-key}}
-@openline-ai:registry=https://npm.pkg.github.com/
-```
-
-2. Install the package to your project:
+1. Install the package to your project:
 ```
 yarn add @openline-ai/openline-web-chat
 ```
-3. Install [Openline Oasis](https://github.com/openline-ai/openline-oasis)
+2. Install and run [Openline Oasis](https://github.com/openline-ai/openline-oasis) via the [Openline CLI](https://www.openline.ai/docs/guides/installing-customer-os)
+
+## Install Webchat to your application
 
 ### Imports
 
@@ -31,6 +25,8 @@ yarn add @openline-ai/openline-web-chat
 // CSS
 import '@openline-ai/openline-web-chat/dist/esm/index.css'
 ```
+
+### Webchat Component
 
 ```javascript
 <WebChat apikey="get-this-from-openline-or-run-oasis" 
@@ -43,6 +39,7 @@ import '@openline-ai/openline-web-chat/dist/esm/index.css'
          trackerBufferSize="1" 
          trackerMinimumVisitLength="10" 
          trackerHeartbeatDelay="10"
+         userEmail="populate this if you know the user and want to skip the provide email step"
     ></WebChat>
 ```
 
@@ -61,3 +58,9 @@ Include the pluging in the docusaurus.config.js
 ```javascript
 plugins: ['docusaurus-node-polyfills']
 ```
+
+## Storybook
+
+To test the component outside of your application you can see it in Storybook, use Node.js version 16.16 and run the following command:
+
+```yarn storybook```
