@@ -1,4 +1,4 @@
-import {styles} from "./styles";
+import './styles.css'
 import {Button, Input, MessageList} from "react-chat-elements";
 import React, {useEffect, useRef, useState} from "react";
 import useWebSocket from 'react-use-websocket';
@@ -78,10 +78,10 @@ export default function ChatEngine(props: ChatEngineProps) {
     }
 
     return (
-        <div style={{...styles.divStyle}}>
+        <div className='div_style'>
             <MessageList
                 referance={messageListReferance}
-                className='message-list'
+                className='message_list'
                 toBottomHeight={'100%'}
                 dataSource={datasource}
                 lockable={true}
