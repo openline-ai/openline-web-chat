@@ -26,6 +26,7 @@ const commonArgs = {
         trackerHeartbeatDelay: '',
         trackerMinimumVisitLength: '',
         userEmail: '',
+        location: 'right',
 }
 
 

@@ -12,6 +12,7 @@ interface OpenlineTrackerProps {
     minimumVisitLength: string
     heartbeatDelay: string
     userEmail?: string | null | undefined
+    location?: string
 }
 
 export default function OpenlineTracker(props: OpenlineTrackerProps) {

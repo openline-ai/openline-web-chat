@@ -16,6 +16,7 @@ interface WebChatProps {
     trackerHeartbeatDelay: string
     children?: React.ReactElement | undefined
     userEmail?: string | null
+    location?: 'left' | 'right'
 }
 
 export default function WebChat({
@@ -30,7 +31,8 @@ export default function WebChat({
                                     trackerMinimumVisitLength,
                                     trackerHeartbeatDelay,
                                     userEmail,
-                                    children
+                                    children,
+                                    location,
 
 }: WebChatProps) {
     const componentRef = useRef();
@@ -62,16 +64,14 @@ export default function WebChat({
                            httpServerPath={httpServerPath}
                            wsServerPath={wsServerPath}
                            userEmail={userEmailInternal}
-                           userEmailSet={(newUserEmail: any) => {
-                               console.log(1)
-                               console.log(newUserEmail)
-                               setUserEmailInternal(newUserEmail)
-                           }}
+                           userEmailSet={(newUserEmail: any) => setUserEmailInternal(newUserEmail)}
+                           location={location}
             />
 
             {children ? React.cloneElement(children, { onClick: handleToggleChatWindow }) :
                 <AvatarButton
                     onClick={handleToggleChatWindow}
+                    location={location}
             />}
 
             <OpenlineTracker
