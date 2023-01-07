@@ -24,7 +24,8 @@ const commonArgs = {
         trackerCollectorUrl: '',
         trackerBufferSize: '',
         trackerHeartbeatDelay: '',
-        trackerMinimumVisitLength: ''
+        trackerMinimumVisitLength: '',
+        userEmail: '',
 }
 
 
