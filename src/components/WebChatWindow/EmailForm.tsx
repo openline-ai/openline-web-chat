@@ -28,8 +28,6 @@ export default function EmailForm(props: EmailPros) {
             }
             return response.json();
         }).then(response => {
-            let stringify = JSON.stringify(response);
-            console.log(stringify)
             callback(response.username)
         }).catch(error => {
             console.log(error);
