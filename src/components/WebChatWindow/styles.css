@@ -10,7 +10,7 @@
     background-color: white;
     /* Border */
     border-radius: 12px;
-    border: 2px solid #7a39e0;
+    border: 1px solid #7a39e0;
     overflow: hidden;
     /* Shadow */
     box-shadow: 0px 0px 16px 6px rgba(0, 0, 0, 0.33);
@@ -85,6 +85,27 @@
 
 .div_style {
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     width: 100%;
 }
+
+/* Overrides for RCE elements */
+
+.rce-input {
+    font-family: mona-sans-black, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.rce-container-mlist {
+    padding-top: 5px;
+    border-top: lightgray 1px solid;
+}
+
+.rce-container-input {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* TODO: add disabled className to Button component and update both active and disabled states
+.rce-button {
+
+} */

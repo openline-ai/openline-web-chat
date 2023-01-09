@@ -1,7 +1,9 @@
 import './styles.css'
-import {Button, Input, MessageList} from "react-chat-elements";
-import React, {useEffect, useRef, useState} from "react";
+import { Button, Input, MessageList } from "react-chat-elements";
+import React, { useEffect, useRef, useState } from "react";
 import useWebSocket from 'react-use-websocket';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 let clearRef = () => {
 }
@@ -25,7 +27,7 @@ export default function ChatEngine(props: ChatEngineProps) {
     const inputReferance = useRef();
     const forceUpdate = useForceUpdate();
 
-    const {lastMessage} = useWebSocket(`${props.wsServerPath}/ws/${props.user}`, {
+    const { lastMessage } = useWebSocket(`${props.wsServerPath}/ws/${props.user}`, {
         onOpen: () => console.log('Websocket opened'),
         //Will attempt to reconnect on all close events, such as server shutting down
         shouldReconnect: (closeEvent) => true,
@@ -55,7 +57,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                 "Content-Type": "application/json",
                 'WebChatApiKey': `${props.apikey}`
             },
-            body: JSON.stringify({"username": `${props.user}`, "message": msg}),
+            body: JSON.stringify({ "username": `${props.user}`, "message": msg }),
         }).then((response) => {
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -94,7 +96,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                 clear={(clear: () => {}) => (clearRef = clear)}
                 placeholder='Write your message here.'
                 multiline={true}
-                maxHeight={50}
+                maxHeight={150}
                 onChange={(e: any) => setMessageText(e.target.value)}
                 onKeyPress={(e) => {
                     if (e.shiftKey && e.key === "Enter") {
@@ -103,10 +105,13 @@ export default function ChatEngine(props: ChatEngineProps) {
                     if (e.key === "Enter") {
                         clearRef();
                         handleMessage(messageText);
+                        e.preventDefault();
                     }
                 }}
-                rightButtons={<Button text={"Send"} onClick={() => handleMessage(messageText)}
-                                      title="Send"/>}
+                rightButtons={<Button disabled={messageText === "" ? true : false}
+                    text={<><FontAwesomeIcon icon={faPaperPlane} /> Send</>}
+                    onClick={() => handleMessage(messageText)}
+                    title="Send" />}
             />
         </div>
     )
