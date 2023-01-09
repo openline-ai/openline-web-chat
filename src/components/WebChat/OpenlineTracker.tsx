@@ -28,7 +28,6 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
 
     useEffect(() => {
         if (props.enabled) {
-            console.log('enabled')
             let bt = newTracker(props.trackerId, props.collectorUrl, {
                 appId: props.appId,
                 discoverRootDomain: true,
@@ -43,9 +42,6 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
                 },
                 plugins: [LinkClickTrackingPlugin()],
             });
-
-            console.log('in tracker in constructor')
-            console.log(props.userEmail)
 
             if (props.userEmail) {
                 bt.setUserId(props.userEmail);
@@ -69,12 +65,7 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
     }, []);
 
     useEffect(() => {
-        console.log('in widget in useEffect')
-        console.log(browserTracker)
-        console.log(props.userEmail)
         if (browserTracker && props.userEmail) {
-            console.log('in tracker in listener')
-            console.log(props.userEmail)
             browserTracker.setUserId(props.userEmail);
         }
 
