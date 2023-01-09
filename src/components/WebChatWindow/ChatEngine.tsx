@@ -1,6 +1,6 @@
 import './styles.css'
-import {Button, Input, MessageList} from "react-chat-elements";
-import React, {useEffect, useRef, useState} from "react";
+import { Button, Input, MessageList } from "react-chat-elements";
+import React, { useEffect, useRef, useState } from "react";
 import useWebSocket from 'react-use-websocket';
 
 let clearRef = () => {
@@ -25,7 +25,7 @@ export default function ChatEngine(props: ChatEngineProps) {
     const inputReferance = useRef();
     const forceUpdate = useForceUpdate();
 
-    const {lastMessage} = useWebSocket(`${props.wsServerPath}/ws/${props.user}`, {
+    const { lastMessage } = useWebSocket(`${props.wsServerPath}/ws/${props.user}`, {
         onOpen: () => console.log('Websocket opened'),
         //Will attempt to reconnect on all close events, such as server shutting down
         shouldReconnect: (closeEvent) => true,
@@ -55,7 +55,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                 "Content-Type": "application/json",
                 'WebChatApiKey': `${props.apikey}`
             },
-            body: JSON.stringify({"username": `${props.user}`, "message": msg}),
+            body: JSON.stringify({ "username": `${props.user}`, "message": msg }),
         }).then((response) => {
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -105,8 +105,10 @@ export default function ChatEngine(props: ChatEngineProps) {
                         handleMessage(messageText);
                     }
                 }}
-                rightButtons={<Button text={"Send"} onClick={() => handleMessage(messageText)}
-                                      title="Send"/>}
+                rightButtons={<Button disabled={messageText === "" ? true : false}
+                    text={"Send"}
+                    onClick={() => handleMessage(messageText)}
+                    title="Send" />}
             />
         </div>
     )
