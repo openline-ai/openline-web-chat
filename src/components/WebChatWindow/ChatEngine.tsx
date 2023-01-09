@@ -2,6 +2,8 @@ import './styles.css'
 import { Button, Input, MessageList } from "react-chat-elements";
 import React, { useEffect, useRef, useState } from "react";
 import useWebSocket from 'react-use-websocket';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 let clearRef = () => {
 }
@@ -106,7 +108,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                     }
                 }}
                 rightButtons={<Button disabled={messageText === "" ? true : false}
-                    text={"Send"}
+                    text={<><FontAwesomeIcon icon={faPaperPlane} /> Send</>}
                     onClick={() => handleMessage(messageText)}
                     title="Send" />}
             />
