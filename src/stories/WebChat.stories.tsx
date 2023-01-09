@@ -18,7 +18,7 @@ const commonArgs = {
         apikey: 'nobody-will-guess-this-api-key',
         httpServerPath: 'http://localhost:8013/api/v1',
         wsServerPath: 'ws://localhost:8013/api/v1',
-        trackerEnabled: true,
+        trackerEnabled: false,
         trackerId: '',
         trackerAppId: '',
         trackerCollectorUrl: '',

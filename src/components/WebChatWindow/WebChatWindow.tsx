@@ -18,8 +18,6 @@ export default function SupportWindow(props: WebChatWindowProps) {
     const [user, setUser] = useState<string>(props.userEmail || '')
 
     const handleUserEmail = (userEmail: string) => {
-        console.log('edi')
-        console.log(userEmail)
         setUser(userEmail)
         props.userEmailSet(userEmail)
     }
