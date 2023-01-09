@@ -1,7 +1,5 @@
 import React, {useState} from "react"
-
-import {styles} from "./styles"
-
+import './styles.css'
 import {LoadingOutlined} from '@ant-design/icons'
 import {Avatar} from '../index';
 
@@ -48,8 +46,8 @@ export default function EmailForm(props: EmailPros) {
 
     return (
         <div
+            className='email_form_window'
             style={{
-                ...styles.emailFormWindow,
                 ...{
                     height: props.visible ? '100%' : '0px',
                     opacity: props.visible ? '1' : '0'
@@ -57,13 +55,12 @@ export default function EmailForm(props: EmailPros) {
             }}
         >
             <div style={{height: '0px'}}>
-                <div style={styles.stripe}/>
+                <div className='stripe'/>
             </div>
 
             <div
-                className='transition-5'
+                className='loading_div transition-5'
                 style={{
-                    ...styles.loadingDiv,
                     ...{
                         zIndex: loading ? '10' : '-1',
                         opacity: loading ? '0.33' : '0',
@@ -71,9 +68,8 @@ export default function EmailForm(props: EmailPros) {
                 }}
             />
             <LoadingOutlined
-                className='transition-5'
+                className='loading_icon transition-5'
                 style={{
-                    ...styles.loadingIcon,
                     ...{
                         zIndex: loading ? '10' : '-1',
                         opacity: loading ? '1' : '0',
@@ -92,7 +88,7 @@ export default function EmailForm(props: EmailPros) {
                        }}
                 />
 
-                <div style={styles.topText}>
+                <div className='top_text'>
                     Welcome to Openline 👋
                 </div>
 
@@ -103,12 +99,12 @@ export default function EmailForm(props: EmailPros) {
                     <input
                         placeholder='Your Email'
                         onChange={e => setEmail(e.target.value)}
-                        style={styles.emailInput}
+                        className='email_input'
                         type="email"
                     />
                 </form>
 
-                <div style={styles.bottomText}>
+                <div className='bottom_text'>
                     Enter your email <br/> to get started.
                 </div>
             </div>

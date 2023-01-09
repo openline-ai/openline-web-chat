@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 import EmailForm from "./EmailForm";
-import {styles} from "./styles";
+import './styles.css'
 import ChatEngine from "./ChatEngine";
 
 interface WebChatWindowProps {
     visible: boolean
-    apikey: string,
+    apikey: string
     httpServerPath: string
     wsServerPath: string
     userEmail?: string | null | undefined
     userEmailSet: (email: string) => void
+    location?: string
 }
 
 
@@ -25,11 +26,12 @@ export default function SupportWindow(props: WebChatWindowProps) {
 
     return (
         <div
-            className='transition-5'
+            className='support_window transition-5'
             style={{
-                ...styles.supportWindow,
                 ...{opacity: props.visible ? '1' : '0',
-                zIndex: props.visible ? '100' : '-1'}
+                zIndex: props.visible ? '100' : '-1',
+                left: props.location === 'left' ? '24px' : 'unset',
+                right: props.location === 'right' ? '24px' : 'unset'}
             }}
         >
             <EmailForm visible={user === ""}
