@@ -23,6 +23,12 @@ export default function SupportWindow(props: WebChatWindowProps) {
     }
 
     return (
+        <div className='support_window_border transition-5'
+            style={{
+                ...{opacity: props.visible ? '1' : '0',
+                zIndex: props.visible ? '100' : '-1',
+                left: props.location === 'left' ? '22px' : 'unset',
+                right: props.location === 'right' ? '22px' : 'unset'}}}>
         <div
             className='support_window transition-5'
             style={{
@@ -43,6 +49,7 @@ export default function SupportWindow(props: WebChatWindowProps) {
                                         httpServerPath={props.httpServerPath}
                                         wsServerPath={props.wsServerPath}
             />}
+        </div>
         </div>
 
     )
