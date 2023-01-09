@@ -35,7 +35,7 @@ export default function WebChat({
 }: WebChatProps) {
     const componentRef = useRef();
 
-    const [user, setUser] = useState<string>(userEmail || '')
+    const [userEmailInternal, setUserEmailInternal] = useState<string>(userEmail || '')
 
     const [visible, isVisible] = useState(false);
 
@@ -61,8 +61,12 @@ export default function WebChat({
                            apikey={apikey}
                            httpServerPath={httpServerPath}
                            wsServerPath={wsServerPath}
-                           userEmail={user}
-                           userEmailSet={(newEmail: string) => setUser(newEmail)}
+                           userEmail={userEmailInternal}
+                           userEmailSet={(newUserEmail: any) => {
+                               console.log(1)
+                               console.log(newUserEmail)
+                               setUserEmailInternal(newUserEmail)
+                           }}
             />
 
             {children ? React.cloneElement(children, { onClick: handleToggleChatWindow }) :
@@ -78,7 +82,7 @@ export default function WebChat({
                 bufferSize={trackerBufferSize}
                 minimumVisitLength={trackerMinimumVisitLength}
                 heartbeatDelay={trackerHeartbeatDelay}
-                userEmail={user}
+                userEmail={userEmailInternal}
             />
 
         </div>

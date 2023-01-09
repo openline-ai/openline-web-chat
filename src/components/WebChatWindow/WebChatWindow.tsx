@@ -16,9 +16,11 @@ interface WebChatWindowProps {
 export default function SupportWindow(props: WebChatWindowProps) {
     const [user, setUser] = useState<string>(props.userEmail || '')
 
-    const handleUserEmail = (email: string) => {
-        setUser(email)
-        props.userEmailSet(email)
+    const handleUserEmail = (userEmail: string) => {
+        console.log('edi')
+        console.log(userEmail)
+        setUser(userEmail)
+        props.userEmailSet(userEmail)
     }
 
     return (
@@ -31,7 +33,7 @@ export default function SupportWindow(props: WebChatWindowProps) {
             }}
         >
             <EmailForm visible={user === ""}
-                onSetUser={user => handleUserEmail(user)}
+                onSetUser={(userEmail: string) => handleUserEmail(userEmail)}
                 apikey={props.apikey}
                 httpServerPath={props.httpServerPath}
             />

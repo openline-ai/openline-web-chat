@@ -16,7 +16,7 @@ interface OpenlineTrackerProps {
 
 export default function OpenlineTracker(props: OpenlineTrackerProps) {
 
-    let browserTracker: BrowserTracker | undefined = undefined;
+    const [browserTracker, setBrowserTracker] = React.useState<BrowserTracker | null>(null)
 
     function propertyOrDefault<T>(propertyValue: T, defaultValue: T) {
         if (propertyValue !== undefined) {
@@ -27,7 +27,8 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
 
     useEffect(() => {
         if (props.enabled) {
-            browserTracker = newTracker(props.trackerId, props.collectorUrl, {
+            console.log('enabled')
+            let bt = newTracker(props.trackerId, props.collectorUrl, {
                 appId: props.appId,
                 discoverRootDomain: true,
                 cookieSecure: true,
@@ -42,9 +43,14 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
                 plugins: [LinkClickTrackingPlugin()],
             });
 
+            console.log('in tracker in constructor')
+            console.log(props.userEmail)
+
             if (props.userEmail) {
-                browserTracker.setUserId(props.userEmail);
+                bt.setUserId(props.userEmail);
             }
+
+            setBrowserTracker(bt);
 
             enableActivityTracking({
                 minimumVisitLength: parseInt(propertyOrDefault(props.minimumVisitLength, "30")),
@@ -62,12 +68,16 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
     }, []);
 
     useEffect(() => {
-
+        console.log('in widget in useEffect')
+        console.log(browserTracker)
+        console.log(props.userEmail)
         if (browserTracker && props.userEmail) {
+            console.log('in tracker in listener')
+            console.log(props.userEmail)
             browserTracker.setUserId(props.userEmail);
         }
 
-    }, [props.userEmail])
+    }, [browserTracker, props.userEmail])
 
     return (
             <></>
