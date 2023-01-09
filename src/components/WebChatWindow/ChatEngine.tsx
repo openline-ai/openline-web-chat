@@ -96,7 +96,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                 clear={(clear: () => {}) => (clearRef = clear)}
                 placeholder='Write your message here.'
                 multiline={true}
-                maxHeight={50}
+                maxHeight={150}
                 onChange={(e: any) => setMessageText(e.target.value)}
                 onKeyPress={(e) => {
                     if (e.shiftKey && e.key === "Enter") {
@@ -105,6 +105,7 @@ export default function ChatEngine(props: ChatEngineProps) {
                     if (e.key === "Enter") {
                         clearRef();
                         handleMessage(messageText);
+                        e.preventDefault();
                     }
                 }}
                 rightButtons={<Button disabled={messageText === "" ? true : false}

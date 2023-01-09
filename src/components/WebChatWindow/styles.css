@@ -10,7 +10,7 @@
     background-color: white;
     /* Border */
     border-radius: 12px;
-    border: 2px solid #7a39e0;
+    border: 1px solid #7a39e0;
     overflow: hidden;
     /* Shadow */
     box-shadow: 0px 0px 16px 6px rgba(0, 0, 0, 0.33);
@@ -102,6 +102,7 @@
 
 .rce-container-input {
     padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* TODO: add disabled className to Button component and update both active and disabled states
