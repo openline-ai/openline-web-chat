@@ -23,34 +23,45 @@ export default function SupportWindow(props: WebChatWindowProps) {
     }
 
     return (
-        <div className='support_window_border transition-5'
-            style={{
-                ...{opacity: props.visible ? '1' : '0',
-                zIndex: props.visible ? '100' : '-1',
-                left: props.location === 'left' ? '22px' : 'unset',
-                right: props.location === 'right' ? '22px' : 'unset'}}}>
-        <div
-            className='support_window transition-5'
-            style={{
-                ...{opacity: props.visible ? '1' : '0',
-                zIndex: props.visible ? '100' : '-1',
-                left: props.location === 'left' ? '24px' : 'unset',
-                right: props.location === 'right' ? '24px' : 'unset'}
-            }}
-        >
-            <EmailForm visible={user === ""}
-                onSetUser={(userEmail: string) => handleUserEmail(userEmail)}
-                apikey={props.apikey}
-                httpServerPath={props.httpServerPath}
-            />
+            <>
+                {
+                        props.visible &&
+                        <>
+                            <div className='support_window_border transition-5'
+                                 style={{
+                                     ...{
+                                         opacity: props.visible ? '1' : '0',
+                                         zIndex: props.visible ? '100' : '-1',
+                                         left: props.location === 'left' ? '22px' : 'unset',
+                                         right: props.location === 'right' ? '22px' : 'unset'
+                                     }
+                                 }}>
+                                <div
+                                        className='support_window transition-5'
+                                        style={{
+                                            ...{
+                                                opacity: props.visible ? '1' : '0',
+                                                zIndex: props.visible ? '100' : '-1',
+                                                left: props.location === 'left' ? '24px' : 'unset',
+                                                right: props.location === 'right' ? '24px' : 'unset'
+                                            }
+                                        }}
+                                >
+                                    <EmailForm visible={user === ""}
+                                               onSetUser={(userEmail: string) => handleUserEmail(userEmail)}
+                                               apikey={props.apikey}
+                                               httpServerPath={props.httpServerPath}
+                                    />
 
-            {user !== "" && <ChatEngine user={user}
-                                        apikey={props.apikey}
-                                        httpServerPath={props.httpServerPath}
-                                        wsServerPath={props.wsServerPath}
-            />}
-        </div>
-        </div>
-
+                                    {user !== "" && <ChatEngine user={user}
+                                                                apikey={props.apikey}
+                                                                httpServerPath={props.httpServerPath}
+                                                                wsServerPath={props.wsServerPath}
+                                    />}
+                                </div>
+                            </div>
+                        </>
+                }
+            </>
     )
 }
