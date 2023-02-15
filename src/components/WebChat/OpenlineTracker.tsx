@@ -27,7 +27,7 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
     }
 
     useEffect(() => {
-        if (props.enabled) {
+        if (props.enabled && browserTracker === null) {
             let bt = newTracker(props.trackerId, props.collectorUrl, {
                 appId: props.appId,
                 discoverRootDomain: true,
@@ -43,24 +43,26 @@ export default function OpenlineTracker(props: OpenlineTrackerProps) {
                 plugins: [LinkClickTrackingPlugin()],
             });
 
-            if (props.userEmail) {
-                bt.setUserId(props.userEmail);
+            if (bt) {
+                if (props.userEmail) {
+                    bt.setUserId(props.userEmail);
+                }
+
+                setBrowserTracker(bt);
+
+                enableActivityTracking({
+                    minimumVisitLength: parseInt(propertyOrDefault(props.minimumVisitLength, "30")),
+                    heartbeatDelay: parseInt(propertyOrDefault(props.heartbeatDelay, "30"))
+                });
+
+                enableLinkClickTracking({
+                    pseudoClicks: true,
+                    //denylist: ['untracked'],
+                    trackContent: true
+                });
+
+                trackPageView({}, [props.trackerId]);
             }
-
-            setBrowserTracker(bt);
-
-            enableActivityTracking({
-                minimumVisitLength: parseInt(propertyOrDefault(props.minimumVisitLength, "30")),
-                heartbeatDelay: parseInt(propertyOrDefault(props.heartbeatDelay, "30"))
-            });
-
-            enableLinkClickTracking({
-                pseudoClicks: true,
-                //denylist: ['untracked'],
-                trackContent: true
-            });
-
-            trackPageView({}, [props.trackerId]);
         }
     }, []);
 
